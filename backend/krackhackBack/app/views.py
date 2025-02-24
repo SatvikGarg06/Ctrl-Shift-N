@@ -9,7 +9,6 @@ import os
 import subprocess
 import socket
 
-port = 8010
 
 
 
@@ -220,7 +219,7 @@ class dockerView(APIView):
         project_dir = finalDir
         print("present dir",project_dir)
 
-        
+        port = 8010
         for i in range(8010,100000):
             if is_port_free(port):
                 port = str(port)
@@ -391,7 +390,6 @@ class LoginView(APIView):
             "name":isUserpreSent[0].name
 
         }, status=status.HTTP_200_OK)
-
 
 
 
