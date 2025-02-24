@@ -1,0 +1,9 @@
+#swiper{
+    position: relative;
+    top: 230px;
+    transform: scale(0.4);
+}
+#prompt{
+    position: relative;
+    top: 100px;
+}

@@ -1,0 +1,16 @@
+.DeployButtons{
+    background-color: white;
+    color: rgb(16, 24, 40);
+    border-radius: 7px;  
+} 
+#div{
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+.DeployButtons:active{
+    background-color: rgb(16, 24, 40);
+    color: white;
+    border-radius: 7px;
+    transform: scale(1.1);
+}

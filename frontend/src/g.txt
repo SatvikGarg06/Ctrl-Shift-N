@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<boltArtifact id="project-import" title="Project Files">
+  <boltAction type="file" filePath="eslint.config.js"><![CDATA[
+import js from '@eslint/js';
+import globals from 'globals';
+import reactHooks from 'eslint-plugin-react-hooks';
+import reactRefresh from 'eslint-plugin-react-refresh';
+import tseslint from 'typescript-eslint';
+
+export default tseslint.config(
+  { ignores: ['dist'] },
+  {
+    extends: [js.configs.recommended, ...tseslint.configs.recommended],
+    files: ['**/*.{ts,tsx}'],
+    languageOptions: {
+      ecmaVersion: 2020,
+      globals: globals.browser,
+    },
+    plugins: {
+      'react-hooks': reactHooks,
+      'react-refresh': reactRefresh,
+    },
+    rules: {
+      ...reactHooks.configs.recommended.rules,
+      'react-refresh/only-export-components': [
+        'warn',
+        { allowConstantExport: true },
+      ],
+    },
+  }
+);
+]]></boltAction>
+  
+  <boltAction type="file" filePath="index.html"><![CDATA[
+<![CDATA[<!DOCTYPE html>]]>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WhatsApp Clone</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+]]></boltAction>
+  
+  <boltAction type="file" filePath="package.json"><![CDATA[
+{
+  "name": "whatsapp-clone",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "eslint .",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "lucide-react": "^0.344.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.14.1",
+    "@tailwindcss/vite": "^1.0.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.1",
+    "typescript": "^5.5.3",
+    "vite": "^5.4.2",
+    "tailwindcss": "^3.4.1",
+    "postcss": "^8.4.35",
+    "autoprefixer": "^10.4.18"
+  }
+}
+]]></boltAction>
+  
+  <boltAction type="file" filePath="src/components/Contacts.tsx"><![CDATA[
+import React from 'react';
+import { Link } from 'react-router-dom';
+
+const contacts = [
+  { id: 1, name: 'Alice' },
+  { id: 2, name: 'Bob' }
+];
+
+function Contacts() {
+  return (
+    <div className='p-4'>
+      <h2 className='text-lg font-bold'>Contacts</h2>
+      <ul>
+        {contacts.map(contact => (
+          <li key={contact.id}>
+            <Link to={`/chat/` + contact.id} className='text-blue-500'>{contact.name}</Link>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+export default Contacts;
+]]></boltAction>
+  
+  <boltAction type="file" filePath="tsconfig.json"><![CDATA[
+{
+  "files": [],
+  "references": [
+    { "path": "./tsconfig.app.json" },
+    { "path": "./tsconfig.node.json" }
+  ]
+}
+]]></boltAction>
+  
+  <boltAction type="file" filePath="tsconfig.app.json"><![CDATA[
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "useDefineForClassFields": true,
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "skipLibCheck": true,
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "isolatedModules": true,
+    "moduleDetection": "force",
+    "noEmit": true,
+    "jsx": "react-jsx",
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true
+  },
+  "include": ["src"]
+}
+]]></boltAction>
+
+  <boltAction type="file" filePath="vite.config.ts"><![CDATA[
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+import tailwind from '@tailwindcss/vite';
+
+export default defineConfig({
+  plugins: [react(), tailwind()],
+  optimizeDeps: {
+    exclude: ['lucide-react']
+  }
+});
+]]></boltAction>
+
+  <boltAction type="file" filePath="src/index.css"><![CDATA[
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+]]></boltAction>
+</boltArtifact>
