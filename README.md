@@ -1,3 +1,4 @@
+## !IMPORTANT!  change the TOKEN and OWNER variable in /backend/krackhackBack/app/gh_pages.py to your own github username and personal access token!!
 # Autonomous Application Builder
 ## By Team: Ctrl + Shift + N 💀
 
