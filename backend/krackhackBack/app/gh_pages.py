@@ -1,6 +1,6 @@
 import requests, base64, os
 
-TOKEN = "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"
+TOKEN = "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"
 OWNER = "SatvikGarg12"
 REPO = "REPO_HERE"
 FOLDER_PATH = "dist"
